@@ -280,7 +280,7 @@ export default function Quiz() {
               ¿Sientes que no eres del todo tú mismo/a, aunque lo tengas todo?
             </h1>
             <p className="text-muted-foreground mb-10 leading-relaxed">
-              Responde 5 minutos de preguntas honestas y recibe una guía personalizada para tu proceso.
+              Responde 3 minutos de preguntas honestas y recibe una guía personalizada para tu proceso.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
               <button onClick={() => { setGender('hombre'); goNext(); }} className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-border bg-card hover:border-primary transition-colors quiz-shadow">
