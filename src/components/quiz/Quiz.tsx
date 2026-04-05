@@ -329,32 +329,63 @@ export default function Quiz() {
 
     // Screen 2: Social proof
     if (screen === 2) {
+      const people = [
+        { initials: 'MG', name: 'María G.', country: 'México',    x: 17, y: 22, color: '#7C5CBF', delay: 0,   cardLeft: false },
+        { initials: 'VS', name: 'Valeria S.', country: 'Venezuela', x: 72, y: 30, color: '#9B59B6', delay: 0.8, cardLeft: true  },
+        { initials: 'CR', name: 'Carlos R.', country: 'Colombia',  x: 68, y: 46, color: '#6C3483', delay: 1.6, cardLeft: true  },
+        { initials: 'LM', name: 'Luisa M.', country: 'Brasil',    x: 78, y: 63, color: '#8E44AD', delay: 2.4, cardLeft: true  },
+        { initials: 'JP', name: 'Jorge P.', country: 'Perú',      x: 14, y: 60, color: '#7D3C98', delay: 3.2, cardLeft: false },
+        { initials: 'EB', name: 'Eduardo B.', country: 'Ecuador', x: 20, y: 77, color: '#A569BD', delay: 4.0, cardLeft: false },
+        { initials: 'AP', name: 'Ana P.',    country: 'Argentina', x: 50, y: 91, color: '#5B2C6F', delay: 4.8, cardLeft: false },
+      ];
       return (
         <Wrapper>
           <div className="text-center pt-8">
             <h2 className="text-xl font-bold text-foreground mb-4 leading-relaxed">
               Más de 50,000 personas en Latinoamérica ya iniciaron su proceso con nosotros.
             </h2>
-            <div className="my-8 flex justify-center">
-              <div className="relative w-52 h-64">
-                <div className="absolute inset-0 bg-accent/50 rounded-3xl" />
-                {[
-                  { top: '8%', left: '35%' }, { top: '15%', left: '50%' },
-                  { top: '22%', left: '40%' }, { top: '28%', left: '60%' },
-                  { top: '35%', left: '30%' }, { top: '42%', left: '55%' },
-                  { top: '48%', left: '45%' }, { top: '55%', left: '35%' },
-                  { top: '62%', left: '50%' }, { top: '70%', left: '40%' },
-                  { top: '78%', left: '32%' }, { top: '18%', left: '65%' },
-                  { top: '50%', left: '25%' }, { top: '40%', left: '70%' },
-                ].map((pos, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-2.5 h-2.5 bg-primary rounded-full animate-float-dot"
-                    style={{ top: pos.top, left: pos.left, animationDelay: `${i * 0.15}s` }}
-                  />
-                ))}
-                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl">🌎</span>
-              </div>
+            <div className="my-6 w-full" style={{ aspectRatio: '4/3', position: 'relative', borderRadius: '20px', background: 'hsl(255 80% 95%)', overflow: 'hidden' }}>
+              {/* Background network grid */}
+              <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                {Array.from({ length: 5 }, (_, row) =>
+                  Array.from({ length: 7 }, (_, col) => {
+                    const x = col * 65 + 15; const y = row * 65 + 15;
+                    return (
+                      <g key={`${row}-${col}`}>
+                        <circle cx={x} cy={y} r="3" fill="hsl(255 45% 53%)" opacity="0.18" />
+                        {col < 6 && <line x1={x} y1={y} x2={x+65} y2={y} stroke="hsl(255 45% 53%)" strokeWidth="0.5" opacity="0.12" />}
+                        {row < 4 && <line x1={x} y1={y} x2={x} y2={y+65} stroke="hsl(255 45% 53%)" strokeWidth="0.5" opacity="0.12" />}
+                      </g>
+                    );
+                  })
+                )}
+              </svg>
+              {/* Latin America map */}
+              <svg viewBox="0 0 300 420" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', height: '92%', width: 'auto' }}>
+                <defs>
+                  <linearGradient id="mapGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="hsl(258 35% 72%)" />
+                    <stop offset="100%" stopColor="hsl(270 45% 65%)" />
+                  </linearGradient>
+                </defs>
+                <path d="M 95,18 L 75,28 L 58,44 L 52,60 L 63,74 L 77,80 L 90,87 L 100,98 L 107,112 L 112,128 L 116,142 L 122,140 L 144,135 L 170,133 L 200,136 L 232,142 L 255,150 L 268,165 L 274,188 L 274,215 L 267,244 L 254,272 L 240,300 L 226,328 L 212,355 L 202,378 L 196,405 L 188,395 L 178,375 L 167,352 L 156,325 L 147,298 L 140,270 L 134,242 L 128,214 L 122,187 L 116,162 L 114,148 L 110,132 L 104,116 L 95,100 L 83,90 L 70,83 L 60,75 L 52,62 L 58,46 L 68,32 Z"
+                  fill="url(#mapGrad)" opacity="0.45" />
+                <path d="M 95,18 L 75,28 L 58,44 L 52,60 L 63,74 L 77,80 L 90,87 L 100,98 L 107,112 L 112,128 L 116,142 L 122,140 L 144,135 L 170,133 L 200,136 L 232,142 L 255,150 L 268,165 L 274,188 L 274,215 L 267,244 L 254,272 L 240,300 L 226,328 L 212,355 L 202,378 L 196,405 L 188,395 L 178,375 L 167,352 L 156,325 L 147,298 L 140,270 L 134,242 L 128,214 L 122,187 L 116,162 L 114,148 L 110,132 L 104,116 L 95,100 L 83,90 L 70,83 L 60,75 L 52,62 L 58,46 L 68,32 Z"
+                  fill="none" stroke="hsl(255 45% 53%)" strokeWidth="1.5" opacity="0.55" />
+              </svg>
+              {/* People avatars */}
+              {people.map((p, i) => (
+                <div key={i} className="latam-avatar" style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, animationDelay: `${p.delay}s`, zIndex: 10 }}>
+                  <div className="latam-pulse" style={{ position: 'absolute', inset: '-10px', borderRadius: '50%', border: `2px solid ${p.color}`, animationDelay: `${p.delay}s` }} />
+                  <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: p.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '10px', fontWeight: 700, border: '2.5px solid white', boxShadow: '0 3px 10px rgba(0,0,0,0.22)', position: 'relative', zIndex: 2 }}>
+                    {p.initials}
+                  </div>
+                  <div className="latam-card" style={{ position: 'absolute', ...(p.cardLeft ? { right: '44px' } : { left: '44px' }), top: '50%', background: 'white', borderRadius: '8px', padding: '3px 7px', whiteSpace: 'nowrap', boxShadow: '0 2px 10px rgba(100,60,180,0.15)', animationDelay: `${p.delay + 0.25}s`, zIndex: 3 }}>
+                    <div style={{ fontWeight: 700, color: '#3d2a6b', fontSize: '10px' }}>{p.name}</div>
+                    <div style={{ color: '#aaa', fontSize: '9px' }}>{p.country}</div>
+                  </div>
+                </div>
+              ))}
             </div>
             <CTA onClick={goNext} />
           </div>
