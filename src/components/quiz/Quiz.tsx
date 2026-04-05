@@ -282,14 +282,24 @@ export default function Quiz() {
             <p className="text-muted-foreground mb-10 leading-relaxed">
               Responde 3 minutos de preguntas honestas y recibe una guía personalizada para tu proceso.
             </p>
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <button onClick={() => { setGender('hombre'); goNext(); }} className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-border bg-card hover:border-primary transition-colors quiz-shadow">
-                <span className="text-5xl">👨</span>
-                <span className="font-medium text-foreground">Hombre</span>
+            <div className="grid grid-cols-3 gap-3 mb-8">
+              <button onClick={() => { setGender('hombre'); goNext(); }} className="flex flex-col items-center gap-3 p-4 rounded-2xl border-2 border-border bg-card hover:border-primary hover:scale-105 transition-all duration-200 quiz-shadow group">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-primary transition-all duration-200">
+                  <img src="/gender-hombre.png" alt="Hombre" className="w-full h-full object-cover object-top" />
+                </div>
+                <span className="font-medium text-foreground text-sm">Hombre</span>
               </button>
-              <button onClick={() => { setGender('mujer'); goNext(); }} className="flex flex-col items-center gap-3 p-6 rounded-2xl border-2 border-border bg-card hover:border-primary transition-colors quiz-shadow">
-                <span className="text-5xl">👩</span>
-                <span className="font-medium text-foreground">Mujer</span>
+              <button onClick={() => { setGender('mujer'); goNext(); }} className="flex flex-col items-center gap-3 p-4 rounded-2xl border-2 border-border bg-card hover:border-primary hover:scale-105 transition-all duration-200 quiz-shadow group">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-primary transition-all duration-200">
+                  <img src="/gender-mujer.png" alt="Mujer" className="w-full h-full object-cover object-top" />
+                </div>
+                <span className="font-medium text-foreground text-sm">Mujer</span>
+              </button>
+              <button onClick={() => { setGender('otro'); goNext(); }} className="flex flex-col items-center gap-3 p-4 rounded-2xl border-2 border-border bg-card hover:border-primary hover:scale-105 transition-all duration-200 quiz-shadow group">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-transparent group-hover:ring-primary transition-all duration-200">
+                  <img src="/gender-otro.png" alt="Otro" className="w-full h-full object-cover object-top" />
+                </div>
+                <span className="font-medium text-foreground text-sm">Otro</span>
               </button>
             </div>
             <p className="text-xs text-muted-foreground">
